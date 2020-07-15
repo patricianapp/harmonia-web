@@ -64,14 +64,14 @@
       const subredditLink = document.getElementById("subredditLink")
       const params = new URLSearchParams(document.location.search.substring(1))
       const code = params.get("code")
-      const scope = params.get("scope")
+      const state = params.get("state")
       updateCommandText()
 
       function updateCommandText() {
         let subredditName = subredditTextBox.value
         let commandTextNode = commandTag.childNodes[0]
         commandTextNode.replaceWith(
-          document.createTextNode(`$login redditbot ${code} ${scope} ${subredditName}`)
+          document.createTextNode(`$login redditbot ${code} ${state} ${subredditName}`)
         )
         subredditLink.setAttribute("href", `https://reddit.com/r/${subredditName}`)
       }
