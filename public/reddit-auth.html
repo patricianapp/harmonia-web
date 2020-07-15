@@ -35,10 +35,6 @@
         text-align: center;
         width: 10em;
       }
-
-      #subredditLink {
-        /* line-height:1em; */
-      }
     </style>
   </head>
   <body>
@@ -53,7 +49,7 @@
       >
     </p>
 
-    <p>
+    <p id="stepTwo" style="display: none;">
       2. DM the bot with this message:<br />
       <code id="commandText"> </code>
     </p>
@@ -65,11 +61,15 @@
       const params = new URLSearchParams(document.location.search.substring(1));
       const code = params.get("code");
       const state = params.get("state");
+      const stepTwoDisplayed = false;
       if (subredditTextbox.value.length > 0) {
         updateCommandText();
       }
 
       function updateCommandText() {
+        if (stepTwoDisplayed === false) {
+          document.getElementById("stepTwo").style.display = "inline";
+        }
         let subredditName = subredditTextbox.value;
         let commandTextNode = commandTag.childNodes[0];
         commandTextNode.replaceWith(
