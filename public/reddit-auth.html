@@ -69,6 +69,7 @@
       function updateCommandText() {
         if (stepTwoDisplayed === false) {
           document.getElementById("stepTwo").style.display = "inline";
+          stepTwoDisplayed = true;
         }
         let subredditName = subredditTextbox.value;
         let commandTextNode = commandTag.childNodes[0];
