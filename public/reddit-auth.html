@@ -59,21 +59,23 @@
     </p>
 
     <script>
-      const subredditTextBox = document.getElementById("subredditTextbox")
-      const commandTag = document.getElementById("commandText")
-      const subredditLink = document.getElementById("subredditLink")
-      const params = new URLSearchParams(document.location.search.substring(1))
-      const code = params.get("code")
-      const state = params.get("state")
-      updateCommandText()
+      const subredditTextbox = document.getElementById("subredditTextbox");
+      const commandTag = document.getElementById("commandText");
+      const subredditLink = document.getElementById("subredditLink");
+      const params = new URLSearchParams(document.location.search.substring(1));
+      const code = params.get("code");
+      const state = params.get("state");
+      if (subredditTextbox.value.length > 0) {
+        updateCommandText();
+      }
 
       function updateCommandText() {
-        let subredditName = subredditTextBox.value
-        let commandTextNode = commandTag.childNodes[0]
+        let subredditName = subredditTextbox.value;
+        let commandTextNode = commandTag.childNodes[0];
         commandTextNode.replaceWith(
           document.createTextNode(`$login redditbot ${code} ${state} ${subredditName}`)
-        )
-        subredditLink.setAttribute("href", `https://reddit.com/r/${subredditName}`)
+        );
+        subredditLink.setAttribute("href", `https://reddit.com/r/${subredditName}`);
       }
     </script>
   </body>

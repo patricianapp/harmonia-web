@@ -12,7 +12,7 @@
     "defaults"
   ],
   "prettier": {
-    "semi": false,
+    "semi": true,
     "printWidth": 100
   },
   "husky": {
